@@ -24,7 +24,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 *Shoes installation is included in the package, so ya you don't need to do anything, just click and run.*
 
-###How to use dis 101:
+###Haw tu use dis 101:
 
 * Choose your server everytime before a search. It needs to know which region your account belongs to, cus logic.
 
