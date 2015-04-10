@@ -97,31 +97,31 @@ end
     
     status_line = para ""
 
-  	flow margin_top: 20, width: 600 do
+    flow margin_top: 20, width: 600 do
   	  p = para "Choose your region: "
   	  p.style(stroke: white)
   	  list_box items: ["", "NA", "EUW", "EUNE", "LAN", "OCE", "RU"], margin_left: 10 do |list|
-  	  	@@region = list.text
+        @@region = list.text
         debug( "region is #{@@region}")
-  	  	unless list.text == ""
-  	  	  status = get_server_status(list.text.downcase)
-  	  	  status_message = "#{list.text} is #{status.upcase}"
-  	  	  status_line.replace(status_message)
-  	  	  if status == "online"
-  	  	    status_line.style(stroke: green, align: "center", size: 18)
-      	  else
+        unless list.text == ""
+          status = get_server_status(list.text.downcase)
+          status_message = "#{list.text} is #{status.upcase}"
+          status_line.replace(status_message)
+          if status == "online"
+            status_line.style(stroke: green, align: "center", size: 18)
+          else
             status_line.style(stroke: red, align: "center", size: 18)
           end
-  	  	else
-  	  	  status_line.replace("Please choose a valid server!")
-  	  	  status_line.style(stroke: red, align: "center", size: 18)
+        else
+          status_line.replace("Please choose a valid server!")
+          status_line.style(stroke: red, align: "center", size: 18)
   	  	end
   	  end
-  	end
+    end
 
 
-  	heading2 = para "Enter summoner's names, you can enter up to 5 names:"
-  	heading2.style(stroke: white, margin_top: 10)
+    heading2 = para "Enter summoner's names, you can enter up to 5 names:"
+    heading2.style(stroke: white, margin_top: 10)
 
     @@text_line = edit_line width: 450, margin_left: 8, margin_top: 10
     
