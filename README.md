@@ -20,7 +20,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 * [Mac OS](http://1drv.ms/1EfUqid)
 * [Windows](http://1drv.ms/1EfUvCy)
 
-*Firt time installion may take serveral minutes. Require [Shoes](http://shoesrb.com/downloads/) to interpret the pakage file (fyi).*
+*Firt time installation may take serveral minutes. Require [Shoes](http://shoesrb.com/downloads/) to interpret the pakage file (fyi).*
 
 *Shoes installation is included in the package, so ya you don't need to do anything, just click and run.*
 
