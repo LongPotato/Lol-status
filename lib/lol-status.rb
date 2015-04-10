@@ -541,7 +541,24 @@ end
 
     stack margin_top: 20, margin_left: 210 do
       para (link("About").click do
-        
+        window width: 300, height: 240, resizable: false do
+          stack margin: 10 do  
+            p1 = para "Lol-status\nv1.0"
+            p1.style(align: "center", size: 10, weight: "semibold")
+
+            p2 = para "For more info check out my:"
+            p2.style(align: "center", size: 10)
+
+            p3 = para (link("Github") do
+              #system("start "https://github.com/LongPotato/Lol-status")
+              system("open", "https://github.com/LongPotato/Lol-status")
+            end)
+            p3.style(align: "center", size: 10)
+
+            p4 = para "Written by LongPotato\nLeague of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends Riot Games, Inc."
+            p4.style(align: "center", size: 10, emphasis: "oblique")
+
+          end
       end)
     end
 
