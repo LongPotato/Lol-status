@@ -9,10 +9,10 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 ###Features:
 
 * Quick check for server status.
-* Check in game status: champion, game length.
-* Handsfree: Automatic check every 3 minutes.
-* Look up profile from ['op.gg'](http://www.op.gg) or current matchup at ['lolnexus'](http://www.lolnexus.com).
-* User can look up up to 5 summoners.
+* Get in game status, get info about champion and game length.
+* Handsfree: Automatic checking every 3 minutes.
+* Look up summoner profile from ['op.gg'](http://www.op.gg) or current game matchup at ['lolnexus'](http://www.lolnexus.com).
+* Look up up to 5 summoners at a time.
 * Save and load friendlists.
 
 ###Download:
