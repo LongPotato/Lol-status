@@ -9,7 +9,7 @@ Shoes.app(title: "Lol-status", width: 600, height: 600, resizable: false) do
 
 
 class GetStatus
-  attr_reader :name_status, :game_length, :game_status, :champ_name, :sum_name, :reg
+  attr_reader :name_status, :game_length, :game_status, :champ_name, :sum_name, :reg, :game_type, :patch_version
 
   def initialize(name, platform_id)
     @name = name.downcase.gsub(/\s+/, '')
@@ -19,6 +19,7 @@ class GetStatus
     @reg = platform_id.gsub(/1/, '').downcase
     get_summoner_id
     get_game_status
+    get_patch_version
   end
 
   def get_summoner_id
@@ -54,6 +55,10 @@ def get_game_status
         break
         end
       end
+
+      @config_id = data["gameQueueConfigId"]
+      get_game_type
+
     when Net::HTTPNotFound then
       @game_status = false
     else
@@ -69,8 +74,48 @@ def get_game_status
     @champ_name = champ_data["name"]
   end
 
-end
 
+  def get_game_type
+    q_type = @config_id
+    if q_type == 0
+      @game_type = "a custom "
+    elsif q_type == 2 || q_type == 14
+      @game_type = "a normal "
+    elsif [7, 31, 32, 33].include? q_type
+      @game_type = "a bot "
+    elsif [8, 9, 41, 52].include? q_type
+      @game_type == "a 3v3 "
+    elsif q_type == 65
+      @game_type = "an ARAM "
+    elsif [4, 6, 42].include? q_type
+      @game_type = "a rank "
+    elsif q_type == 76
+      @game_type = "an URF "
+    elsif q_type == 61
+      @game_type = "a team builder "
+    else
+      @game_type = "a "
+    end    
+  end
+
+
+  def get_patch_version
+    link_patch = "https://global.api.pvp.net/api/lol/static-data/#{@reg}/v1.2/versions?api_key=#{@@API_key}"
+    uri = URI.parse(link_patch)
+    response = Net::HTTP.get_response(uri)
+    case response
+    when Net::HTTPSuccess then
+      data = response.body.gsub(/"/,'')
+      data[0] = ''
+      data[-1] = ''
+      data_array = data.split(',')
+      @patch_version = data_array[0]
+    else
+      abort("Patch Error")
+    end
+  end
+
+end
 
 
   def get_server_status(region)
@@ -95,7 +140,7 @@ end
   	heading = para "League of Legends status"
   	heading.style(align: "center", stroke: gold, size: 35, font: "serif")
     
-    status_line = para ""
+    @@status_line = para ""
 
     flow margin_top: 20, width: 600 do
   	  p = para "Choose your region: "
@@ -106,15 +151,15 @@ end
         unless list.text == ""
           status = get_server_status(list.text.downcase)
           status_message = "#{list.text} is #{status.upcase}"
-          status_line.replace(status_message)
+          @@status_line.replace(status_message)
           if status == "online"
-            status_line.style(stroke: green, align: "center", size: 18)
+            @@status_line.style(stroke: green, align: "center", size: 18)
           else
-            status_line.style(stroke: red, align: "center", size: 18)
+            @@status_line.style(stroke: red, align: "center", size: 18)
           end
         else
-          status_line.replace("Please choose a valid server!")
-          status_line.style(stroke: red, align: "center", size: 18)
+          @@status_line.replace("Please choose a valid server!")
+          @@status_line.style(stroke: red, align: "center", size: 18)
   	  	end
   	  end
     end
@@ -129,6 +174,7 @@ end
     flow margin_left: 90, margin_top: 30 do 
 
       button " Search " do
+        if @@region != ""
         window width: 600, height: 600, title: "Lol-status" do
           background gainsboro
           name = @@text_line.text
@@ -261,6 +307,9 @@ end
             end)
           end
 
+      
+          @@patchver = para ""
+          @@patchver.style(size: 10, align: "center", margin_top: 35)
 
           @@para_array = [@@p0, @@p1, @@p2, @@p3, @@p4]
           @@name_array = [@@n0, @@n1, @@n2, @@n3, @@n4]
@@ -273,10 +322,12 @@ end
             valid_name = status.name_status
             valid_game = status.game_status
             game_length = status.game_length
+            game_mode = status.game_type
+            version = status.patch_version
 
             if valid_name 
               if valid_game
-                  @@para_array[index].replace("#{sname} is in a game, playing #{champ} for #{game_length} minutes!\n")
+                  @@para_array[index].replace("#{sname} is in #{game_mode}game, playing #{champ} for #{game_length} minutes!\n")
                   @@name_array[index].replace(summoner)
                   debug(@@name_array[index])
               else
@@ -287,6 +338,8 @@ end
             else
                 @@para_array[index].replace("Can not find summoner with this name: #{summoner}.\n")
             end
+
+            @@patchver.replace("Patch #{version}")
           end
 
 
@@ -298,10 +351,12 @@ end
               valid_name = status.name_status
               valid_game = status.game_status
               game_length = status.game_length
+              game_mode = status.game_type
+              version = status.patch_version
 
               if valid_name 
                 if valid_game
-                    @@para_array[index].replace("#{sname} is in a game, playing #{champ} for #{game_length} minutes!\n")
+                    @@para_array[index].replace("#{sname} is in #{game_mode}game, playing #{champ} for #{game_length} minutes!\n")
                     @@name_array[index].replace(summoner)    
                 else
                     @@para_array[index].replace("#{sname} is not currently in a game.\n")
@@ -310,9 +365,14 @@ end
               else
                   @@para_array[index].replace("Can not find summoner with this name: #{summoner}.\n")
               end
+
+              @@patchver.replace("Patch #{version}")
             end
           end
-
+        end
+        else
+          @@status_line.replace("Please choose a valid server!")
+          @@status_line.style(stroke: red, align: "center", size: 18)
         end
       end
 
@@ -471,6 +531,8 @@ end
             end)
           end
 
+          @@patchver = para ""
+          @@patchver.style(size: 10, align: "center", margin_top: 35)
 
           @@para_array = [@@p0, @@p1, @@p2, @@p3, @@p4]
           @@name_array = [@@n0, @@n1, @@n2, @@n3, @@n4]
@@ -483,10 +545,12 @@ end
             valid_name = status.name_status
             valid_game = status.game_status
             game_length = status.game_length
+            game_mode = status.game_type
+            version = status.patch_version
 
             if valid_name 
               if valid_game
-                  @@para_array[index].replace("#{sname} is in a game, playing #{champ} for #{game_length} minutes!\n")
+                  @@para_array[index].replace("#{sname} is in #{game_mode}game, playing #{champ} for #{game_length} minutes!\n")
                   @@name_array[index].replace(summoner)
                   debug(@@name_array[index])
               else
@@ -497,6 +561,8 @@ end
             else
                 @@para_array[index].replace("Can not find summoner with this name: #{summoner}.\n")
             end
+
+            @@patchver.replace("Patch #{version}")
           end
 
 
@@ -508,10 +574,12 @@ end
               valid_name = status.name_status
               valid_game = status.game_status
               game_length = status.game_length
+              game_mode = status.game_type
+              version = status.patch_version
 
               if valid_name 
                 if valid_game
-                    @@para_array[index].replace("#{sname} is in a game, playing #{champ} for #{game_length} minutes!\n")
+                    @@para_array[index].replace("#{sname} is in #{game_mode}game, playing #{champ} for #{game_length} minutes!\n")
                     @@name_array[index].replace(summoner)    
                 else
                     @@para_array[index].replace("#{sname} is not currently in a game.\n")
@@ -521,6 +589,8 @@ end
                   @@para_array[index].replace("Can not find summoner with this name: #{summoner}.\n")
               end
             end
+
+            @@patchver.replace("Patch #{version}")
           end
 
           @@save_message.replace("File is loaded!")
@@ -543,7 +613,7 @@ end
       para (link("About").click do
         window width: 300, height: 240, resizable: false do
           stack margin: 10 do  
-            p1 = para "Lol-status\nv1.0"
+            p1 = para "Lol-status\nv1.1"
             p1.style(align: "center", size: 10, weight: "semibold")
 
             p2 = para "For more info check out my:"
@@ -557,8 +627,8 @@ end
 
             p4 = para "Written by LongPotato\nLeague of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends Riot Games, Inc."
             p4.style(align: "center", size: 10, emphasis: "oblique")
-
           end
+        end
       end)
     end
 
