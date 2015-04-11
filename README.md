@@ -18,8 +18,8 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 ###Download:
 
-* [Mac OS](http://1drv.ms/1DtP3vl)
-* [Windows](http://1drv.ms/1DtPaXM)
+* [Mac OS](http://1drv.ms/1azOUeh)
+* [Windows](http://1drv.ms/1azOYuC)
 
 *First time installation may take serveral minutes. Require [Shoes](http://shoesrb.com/downloads/) to interpret the package file (fyi).*
 
@@ -33,15 +33,15 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 2. Summoner search is case and space insensitive. That means you can freely type anything, no need to worry about spaces and capital letters in the name.
 
-3. Search up to 5 summoners. Well, you can type more than 5 but it will only display 5 lel. Use commas to separate summoners names.
+3. Search up to 5 summoners. Well, you can type more than 5 but it will only display 5, lel. Use commas to separate summoners names.
 
-4. It's not freezing! It's LOADING!. Retrieving information from Rito's server takes time, so go grab a snack or something.
+4. It's not freezing! It's LOADING!. Retrieving information from Rito's server takes time, so you have plenty of time to practice blinking eyes.
 
-5. Keep both windows open please! Handsfree needs both to run.
+5. Keep both windows open please! Handsfree transfers information between these windows. It needs both to run.
 
 6. Save your summoner names to a local text file for your convenience. The next time you fire up the program, just load in the file, no need to set up region or type in names! 
 
-7. Boom! sit back and enjoy stalking people, because of handsfree no need to use your hands ;)
+7. Boom! sit back and enjoy stalking people. With the help of Handsfree looping feature, your hands are free from typing, use it for something else ;)
 
 ----
 
@@ -51,16 +51,16 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 ![2](https://raw.githubusercontent.com/LongPotato/Lol-status/master/pics/pic2.jpg)
 
-![3](https://github.com/LongPotato/Lol-status/blob/master/pics/p3.jpg)
+![3](https://raw.githubusercontent.com/LongPotato/Lol-status/master/pics/pic3.jpg)
 
-![4](https://github.com/LongPotato/Lol-status/blob/master/pics/pic4.jpg)
+![4](https://raw.githubusercontent.com/LongPotato/Lol-status/master/pics/pic4.jpg)
 
 
 ###A little note about the codes:
 
-  This github is where I share my programming projects. I want to note that the GUI file for this program, [`lol-status`](https://github.com/LongPotato/Lol-status/blob/master/lib/lol-status.rb) is very messy, and have bad code practices: such as overuse of global variables, repeated codes...
+  This github is where I share my programming projects. I want to note that eventhough the program runs fine, the GUI file for this program, [`lol-status`](https://github.com/LongPotato/Lol-status/blob/master/lib/lol-status.rb) is very messy, and have bad code practices: such as overuse of global variables, repeated codes...
 
-  Ruby Shoes itself has different elements, code blocks that refer to different 'self' objects. Therefore if a variable goes out of scope even if it is initialized, it will be lost. I did not plan ahead to prepare my command line codes for this issue and I was too eager to make the GUI to work as soon as possible. The fastest way that I choses to approach this problem is to make variables become class variables. Which act as global variables, never change between objects. In my opinion it's a bad habit.
+  Ruby Shoes itself has different elements, code blocks that refer to different 'self' objects. Therefore if a variable goes out of scope even if it is initialized, it will be lost. I did not plan ahead to prepare my command line codes for this issue and I was too eager to make the GUI to work as soon as possible. The fastest way that I chose to approach this problem is to make variables become class variables. Which act as global variables, never change between objects. In my opinion it's a bad habit.
 
   If you want to get an idea of how this program works. I suggest looking at the [`lol-com.rb`](https://github.com/LongPotato/Lol-status/blob/master/lib/lol-com.rb) file. It's way simpler and emphasizes the main functionalities.
 
@@ -70,20 +70,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
   $ ruby lol-com.rb
   ```
 
-
-
-
 GG easy!
 
 
 *Lol-status is intended for personal use. This program isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.*
-
-
-
-
-
-
-
-
-
-
