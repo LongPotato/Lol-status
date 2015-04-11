@@ -136,16 +136,15 @@ end
   background ("#000000".."#404040")
   stack width: 600, height: 600, margin: 0.1 do
 
-  	
-  	heading = para "League of Legends status"
-  	heading.style(align: "center", stroke: gold, size: 35, font: "serif")
+  heading = para "League of Legends status"
+  heading.style(align: "center", stroke: gold, size: 35, font: "serif")
     
-    @@status_line = para ""
+  @@status_line = para ""
 
     flow margin_top: 20, width: 600 do
-  	  p = para "Choose your region: "
-  	  p.style(stroke: white)
-  	  list_box items: ["", "NA", "EUW", "EUNE", "LAN", "OCE", "RU"], margin_left: 10 do |list|
+        p = para "Choose your region: "
+        p.style(stroke: white)
+        list_box items: ["", "NA", "EUW", "EUNE", "LAN", "OCE", "RU"], margin_left: 10 do |list|
         @@region = list.text
         debug( "region is #{@@region}")
         unless list.text == ""
