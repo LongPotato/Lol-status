@@ -43,6 +43,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 7. Boom! sit back and enjoy stalking people. With the help of Handsfree looping feature, your hands are free from typing, use it for something else ;)
 
+
 ----
 
 ###Screenshots:
@@ -69,6 +70,8 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
   ```
   $ ruby lol-com.rb
   ```
+
+----
 
 GG easy!
 
