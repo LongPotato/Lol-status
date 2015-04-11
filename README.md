@@ -41,7 +41,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 6. Save your summoner names to a local text file for your convenience. The next time you fire up the program, just load in the file, no need to set up region or type in names! 
 
-7. Boom! sit back and enjoy stalking people, because of handsfree no need to use your hands ;)
+7. Boom! sit back and enjoy stalking people, because of handsfree, your hands are free, do whatever you want ;)
 
 ----
 
