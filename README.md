@@ -20,7 +20,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 * [Mac OS](http://1drv.ms/1azOUeh)
 * [Windows](http://1drv.ms/1azOYuC)
-* Windows 8: Download [Shoes](http://shoesrb.com/downloads/) and download this [.shy](http://1drv.ms/1HgSY04) file. Open it with Shoes.
+* Windows 8: Download [Shoes](http://shoesrb.com/downloads/) and download this [.shy](http://1drv.ms/1HgSY04) file, then open it with Shoes.
 
 
 
