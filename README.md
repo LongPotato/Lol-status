@@ -62,9 +62,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 ###A little note about the codes:
 
-  This github is where I share my programming projects. I want to note that eventhough the program runs fine, the GUI file for this program, [`lol-status`](https://github.com/LongPotato/Lol-status/blob/master/lib/lol-status.rb) is very messy, and have bad code practices: such as overuse of global variables, repeated codes...
-
-  Ruby Shoes itself has different elements, code blocks that refer to different 'self' objects. Therefore if a variable goes out of scope even if it is initialized, it will be lost. I did not plan ahead to prepare my command line codes for this issue and I was too eager to make the GUI to work as soon as possible. The fastest way that I chose to approach this problem is to make variables become class variables. Which act as global variables, never change between objects. In my opinion it's a bad habit.
+ The interface for this program is built using Ruby Shoes, a simple GUI libary for building desktop application. The code for this program's interface and logic are all contained in the same `rb` file.
 
   If you want to get an idea of how this program works. I suggest looking at the [`lol-com.rb`](https://github.com/LongPotato/Lol-status/blob/master/lib/lol-com.rb) file. It's way simpler and emphasizes the main functionalities.
 
