@@ -64,7 +64,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
  The interface for this program is built using Ruby Shoes, a simple GUI libary for building desktop application. The code for this program's interface and logic are all contained in the same `rb` file.
 
-  If you want to get an idea of how this program works. I suggest looking at the [`lol-com.rb`](https://github.com/LongPotato/Lol-status/blob/master/lib/lol-com.rb) file. It's way simpler and emphasizes the main functionalities.
+  If you want to get an idea of how this program works. I suggest looking at the [`lol-com.rb`](https://github.com/LongPotato/Lol-status/blob/master/lib/lol-com.rb) file, the command line version. It's way simpler and emphasizes the main functionalities.
 
   To run the command line version, with Ruby installed, type:
 
