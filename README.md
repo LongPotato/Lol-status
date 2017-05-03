@@ -1,4 +1,4 @@
-#Lol-status
+# Lol-status
 
 This is a little program that I make for my favorite game: League of Legends. 
 
@@ -6,7 +6,7 @@ This program calls REST APIs from [Riot games](https://developer.riotgames.com/a
 
 The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
-###Features:
+### Features:
 
 * Quick check for server status.
 * Display current patch.
@@ -16,7 +16,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 * Look up up to 5 summoners at a time.
 * Save and load friendlists.
 
-###Download:
+### Download:
 
 * [Mac OS](http://1drv.ms/1azOUeh)
 * [Windows](http://1drv.ms/1azOYuC)
@@ -30,7 +30,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 ----
 
-###Haw tu use dis 101:
+### Haw tu use dis 101:
 
 1. Choose your server everytime before a search. It needs to know which region your account belongs to, cus logic.
 
@@ -49,7 +49,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 
 ----
 
-###Screenshots:
+### Screenshots:
 
 ![1](https://raw.githubusercontent.com/LongPotato/Lol-status/master/pics/pic1.jpg)
 
@@ -60,7 +60,7 @@ The GUI was built by using [Ruby Shoes](http://shoesrb.com) toolkit.
 ![4](https://raw.githubusercontent.com/LongPotato/Lol-status/master/pics/pic4.jpg)
 
 
-###A little note about the codes:
+### A little note about the codes:
 
  The interface for this program is built using Ruby Shoes, a simple GUI libary for building desktop application. The code for this program's interface and logic are all contained in the same `rb` file.
 
